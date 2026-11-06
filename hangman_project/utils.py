@@ -8,4 +8,3 @@ def get_random_word():
     with open("wordlist.txt", "r") as f:
         wordList = f.readlines()
     return random.choice(wordList).strip()
-c
