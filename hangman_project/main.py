@@ -4,6 +4,7 @@
 # TODO: Importar la clase HangmanGame e integrar la lógica principal de ejecución.
 
 import game as game
+# [ToDo] Cambiarle el nombre de utilsss a algo útil realmente.
 import utils as utilsss
 
 def startGame():
