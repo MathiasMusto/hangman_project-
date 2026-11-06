@@ -11,6 +11,7 @@ def startGame():
     hangman = game.HangmanGame(utilsss.get_random_word())
     while (hangman.errors < hangman.max_errors):
         letter = giveMeLetter()
+        # Si no es una letra, no debería contar como intento.
         if len(letter) == 1 and letter.isalpha() and letter not in hangman.guessed_letters:
             print("¡Bien hecho!")
             break
