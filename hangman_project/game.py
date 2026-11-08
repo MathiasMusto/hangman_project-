@@ -11,7 +11,16 @@ class HangmanGame:
         progress = []
         for char in self.word:
             if char in self.guessed_letters or not char.isalpha():
-                progress.append(char)
+                progress.append(f"{char} ")
             else:
-                progress.append("_")
+                progress.append("_ ")
         return "".join(progress)
+
+    def process_guess(self, letter: str) -> bool:
+        """Procesa la letra adivinada por el usuario."""
+        if letter in self.word:
+            self.guessed_letters.append(letter)
+            return True
+        else:
+            self.errors +=1
+            return False
