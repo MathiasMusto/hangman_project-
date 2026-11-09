@@ -11,15 +11,17 @@ def startGame():
     hangman = game.HangmanGame(useful.get_random_word())
     while (hangman.errors < hangman.max_errors):
         print("------------------------------------------")
-        print(f"Palabra: {hangman.word}") # Sacar
         letter = giveMeLetter()
-        """ Si no es una letra, no debería contar como intento."""
+        """
+            Si no es una letra, no debería contar como intento.
+            En caso de que la letra ya fue acertada, se muestra su mensaje correspondiente.
+        """
         if len(letter) != 1 or not letter.isalpha():
             print("Carácter inválido. Intente nuevamente.")
-        """En caso de que la letra ya fue acertada, se muestra su mensaje correspondiente."""
         elif letter in hangman.guessed_letters:
             print("La letra ya fue adivinada.")
             hangman.errors += 1
+            hangman.errorsList.append(letter)
         else:
             """
                 Si ninguna de las dos condiciones de arriba se cumplen, entonces la letra es válida y no fue ingresada
@@ -27,12 +29,12 @@ def startGame():
             """
             hangman.process_guess(letter)
         if hangman.is_won():
-            print("¡Ganaste!")
             showFeedback(hangman)
+            print("¡Ganaste!")
             break
         elif hangman.is_lost():
-            print("Fin del juego")
             showFeedback(hangman)
+            print("Fin del juego")
             break
         else:
             showFeedback(hangman)
@@ -42,6 +44,7 @@ def giveMeLetter():
 def showFeedback(hangman):
     # Hay que mostrar las letras incorrectas???? To Check
     print(f"Letras adivinadas: {', '.join(hangman.guessed_letters)}")
+    print(f"Intentos incorrectos: {', '.join(hangman.errorsList)}")
     print(hangman.display_progress())
     print(f"Intentos restantes: {hangman.max_errors - hangman.errors}")
 
