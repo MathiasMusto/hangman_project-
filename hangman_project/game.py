@@ -1,5 +1,5 @@
 class HangmanGame:
-    def __init__(self, word: str):
+    def init(self, word: str):
         """Inicializa los atributos del juego según los requerimientos."""
         self.word = word.lower()
         self.guessed_letters = []
@@ -10,10 +10,10 @@ class HangmanGame:
         """Muestra el estado actual de la palabra con guiones bajos y letras adivinadas."""
         progress = []
         for char in self.word:
-            if char in self.guessed_letters or not char.isalpha():
+            if char in self.guessedletters or not char.isalpha():
                 progress.append(f"{char} ")
             else:
-                progress.append("_ ")
+                progress.append(" ")
         return "".join(progress)
 
     def process_guess(self, letter: str) -> bool:
@@ -23,4 +23,19 @@ class HangmanGame:
             return True
         else:
             self.errors +=1
+            return False
+
+    def is_won(self) -> bool:
+        win = True
+        index = 0
+        while win and index < len(self.word):
+            if self.word[index] not in self.guessed_letters:
+                win = False
+            index += 1
+        return win
+
+    def is_lost(self) -> bool:
+        if self.errors == self.max_errors:
+            return True
+        else:
             return False
