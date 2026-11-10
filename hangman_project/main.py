@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 
 """ Bucle principal del juego"""
-""" TODO: Importar la clase HangmanGame e integrar la lógica principal de ejecución."""
 
 import game as game
-"""[ToDo] Cambiarle el nombre de useful a algo útil realmente."""
 import utils as useful
 
 def startGame():
@@ -14,7 +12,7 @@ def startGame():
         letter = giveMeLetter()
         """
             Si no es una letra, no debería contar como intento.
-            En caso de que la letra ya fue acertada, se muestra su mensaje correspondiente.
+            En caso de que la letra ya fue acertada, se muestra su mensaje correspondiente y se aumentan los errores.
         """
         if len(letter) != 1 or not letter.isalpha():
             print("Carácter inválido. Intente nuevamente.")
@@ -38,11 +36,11 @@ def startGame():
             break
         else:
             showFeedback(hangman)
+
 def giveMeLetter():
     return input("Ingresá una letra: ")
 
 def showFeedback(hangman):
-    # Hay que mostrar las letras incorrectas???? To Check
     print(f"Letras adivinadas: {', '.join(hangman.guessed_letters)}")
     print(f"Intentos incorrectos: {', '.join(hangman.errorsList)}")
     print(hangman.display_progress())
