@@ -18,6 +18,7 @@ def startGame():
         if len(letter) != 1 or not letter.isalpha():
             print("Carácter inválido. Intente nuevamente.")
             hangman.errors += 1
+            hangman.errorsList.append(letter)
         elif letter in hangman.guessed_letters:
             print("La letra ya fue adivinada.")
             hangman.errors += 1
