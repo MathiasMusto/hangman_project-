@@ -22,3 +22,6 @@ game.py (Motor del Juego): Define la clase HangmanGame. Almacena y gestiona el e
 utils.py (Utilidades): Contiene funciones auxiliares de soporte. Su función principal (get_random_word) interactúa con archivos externos para seleccionar una palabra aleatoria.
 
 wordlist.txt (Recurso de Datos): Archivo de texto plano que contiene la lista de palabras disponibles para ser elegidas en cada partida.
+
+Presentacion de la clase 
+https://docs.google.com/presentation/d/1FFXQ417ZE0kjoWTxx52r192iqYvmwHjYfxnbZjuCb9c/edit?usp=sharing
