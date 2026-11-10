@@ -15,7 +15,8 @@ class HangmanGame:
                 progress.append(f"{char} ")
             else:
                 progress.append("_")
-        return "".join(progress)
+        palabra = " ".join(progress)
+        return f"Palabra: {palabra}"
 
     def process_guess(self, letter: str) -> bool:
         """Procesa la letra adivinada por el usuario."""
